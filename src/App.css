@@ -335,9 +335,21 @@
   background-clip: text;
 }
 
+/* Hero Gradient - "You own it" */
+.hero-gradient {
+  /* Match the logo-minds blue: #0071E3 to Purple/Blue */
+  background: linear-gradient(90deg, #0071E3 0%, #5856D6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Ensure it overrides any default white color */
+  color: transparent;
+}
+
 .hero-subtitle {
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
+  /* Fix: Use variable for Light Mode visibility */
   line-height: 1.5;
   margin-bottom: 3rem;
   font-weight: 400;
@@ -369,9 +381,10 @@
 }
 
 .btn-primary {
-  background: #FFFFFF;
-  color: #000000;
-  border: 1px solid white;
+  /* Invert colors based on theme */
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
 }
 
 .btn-primary:hover {

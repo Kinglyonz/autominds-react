@@ -1059,15 +1059,15 @@
 .approach-item h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #ffffff;
-  /* Fix: Force white */
+  color: var(--text-primary);
+  /* Fix: Use semantic var */
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
 }
 
 .approach-item p {
-  color: rgba(255, 255, 255, 0.7);
-  /* Fix: Force light gray */
+  color: var(--text-secondary);
+  /* Fix: Use semantic var */
   line-height: 1.7;
 }
 
@@ -1088,22 +1088,26 @@
 }
 
 .security-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  /* Use semantic card bg */
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 2rem;
+  box-shadow: var(--shadow-card);
+  /* Add shadow for light mode */
+}
 }
 
 .security-item h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
   margin-bottom: 0.75rem;
 }
 
 .security-item p {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: var(--text-secondary) !important;
   line-height: 1.6;
 }
 
@@ -1292,8 +1296,8 @@
 
 /* Footer Section */
 .footer {
-  background: black;
-  /* Explicitly black matches the user screenshot desire */
+  background: var(--bg-primary);
+  /* Use semantic bg */
   padding: 6rem 0 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
@@ -1311,8 +1315,8 @@
 }
 
 .footer .logo-auto {
-  color: white !important;
-  -webkit-text-fill-color: white !important;
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
   background: none !important;
 }
 

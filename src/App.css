@@ -1292,7 +1292,8 @@
 
 /* Footer Section */
 .footer {
-  background: var(--black);
+  background: black;
+  /* Explicitly black matches the user screenshot desire */
   padding: 6rem 0 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
@@ -1305,12 +1306,18 @@
 
 .footer .logo {
   margin-bottom: 0.5rem;
+  justify-content: center;
+  /* Center the logo text */
 }
 
 .footer .logo-auto {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
+  color: white;
+  /* Ensure 'Auto' is white */
+}
+
+color: #ffffff !important;
+-webkit-text-fill-color: #ffffff !important;
+background: none !important;
 }
 
 .footer .logo-minds {

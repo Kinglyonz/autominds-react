@@ -275,7 +275,18 @@ function App() {
 
         {/* Right 3D scene */}
         <div className="hero-spline">
-          <ErrorBoundary fallback={<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.3 }}><Brain size={300} color="#333" /></div>}>
+          <ErrorBoundary fallback={
+            <div className="spline-fallback" style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'url(/robot_fallback.png) no-repeat center center',
+              backgroundSize: 'contain'
+            }}>
+            </div>
+          }>
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="spline-scene"

@@ -190,7 +190,8 @@
   bottom: 0;
   width: 55%;
   height: 100%;
-  transform: scale(1.15);
+  transform: scale(1.15) translateY(50px);
+  /* Lower the robot by ~1 inch (approx 96px or a relative %) */
   transform-origin: right bottom;
 }
 
@@ -1019,10 +1020,9 @@
   font-weight: 700;
   margin-bottom: 4rem;
   text-align: center;
-  color: white;
-  /* Force white text for all section titles */
-  /* Fallback */
-  background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
+  color: var(--text-primary);
+  /* Use semantic gradient */
+  background: var(--gradient-title);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2899,73 +2899,83 @@
     margin-top: 0.5rem;
   }
 }
+
 /* --- Mobile Polish (Steve Jobs Edition) --- */
 @media (max-width: 768px) {
+
   /* Typography Scale */
   .hero-title {
     font-size: 2.5rem !important;
     line-height: 1.1;
   }
-  
+
   .section-title {
     font-size: 2rem !important;
     margin-bottom: 2rem !important;
   }
-  
+
   /* Single Column Layouts */
   .approach-grid {
-    grid-template-columns: 1fr !important; /* Stack vertically */
+    grid-template-columns: 1fr !important;
+    /* Stack vertically */
     gap: 2rem !important;
   }
-  
+
   .security-grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
   }
-  
+
   /* Touch Targets & Spacing */
   .btn {
-    padding: 1rem 1.5rem !important; /* Larger touch area */
+    padding: 1rem 1.5rem !important;
+    /* Larger touch area */
     font-size: 1rem !important;
-    width: 100%; /* Full width buttons on mobile */
+    width: 100%;
+    /* Full width buttons on mobile */
     justify-content: center;
   }
-  
+
   .nav-cta {
-    display: none; /* Hide primary CTA in nav on mobile to save space, use footer/inline */
+    display: none;
+    /* Hide primary CTA in nav on mobile to save space, use footer/inline */
   }
 
   /* Navigation Adjustment */
   .nav-inner {
     padding: 0.75rem 1rem !important;
   }
-  
+
   .nav-links {
     gap: 1rem !important;
   }
-  
+
   .nav-links a {
     font-size: 0.9rem;
   }
-  
+
   /* Calendly Fix */
   .calendly-wrapper {
-    height: 700px !important; /* Keep height but ensure flow */
-    border-radius: 0 !important; /* Edge to edge on small screens */
+    height: 700px !important;
+    /* Keep height but ensure flow */
+    border-radius: 0 !important;
+    /* Edge to edge on small screens */
     border-left: none !important;
     border-right: none !important;
   }
-  
+
   .section-inner {
-    padding: 0 1.5rem !important; /* Elegant spacing, not flushed */
+    padding: 0 1.5rem !important;
+    /* Elegant spacing, not flushed */
   }
-  
+
   /* Hide complex 3D on mobile to improve performance/layout */
   .hero-spline {
-    opacity: 0.3; /* Fade it out or hide */
+    opacity: 0.3;
+    /* Fade it out or hide */
     pointer-events: none;
   }
-  
+
   .chat-widget {
     bottom: 1rem !important;
     right: 1rem !important;

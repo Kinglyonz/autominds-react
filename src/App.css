@@ -996,9 +996,7 @@
 }
 
 /* Approach */
-.approach {
-  background: white;
-}
+/* Approach - Removed legacy white bg */
 
 /* Services - Orbital Timeline */
 .orbital-section {

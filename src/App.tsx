@@ -236,35 +236,7 @@ function App() {
         </div>
       </section>
 
-      {/* Results / Social Proof */}
-      <section className="results-section">
-        <div className="section-inner">
-          <motion.div
-            className="results-grid"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="result-item">
-              <span className="result-number">47%</span>
-              <span className="result-label">Average cost reduction for our clients</span>
-            </div>
-            <div className="result-item">
-              <span className="result-number">2M+</span>
-              <span className="result-label">Documents processed monthly</span>
-            </div>
-            <div className="result-item">
-              <span className="result-number">99.9%</span>
-              <span className="result-label">Uptime across all deployments</span>
-            </div>
-            <div className="result-item">
-              <span className="result-number">0</span>
-              <span className="result-label">Data breaches. Ever.</span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+
 
       {/* Approach */}
       <AnimatedSection id="approach" className="approach">

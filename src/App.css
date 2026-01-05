@@ -672,8 +672,14 @@
 .orbital-glow {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 113, 227, 0.3) 0%, transparent 70%);
+  /* Fix: Make glow much more subtle/sharp or remove in light mode context if needed */
+  background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, transparent 70%);
   pointer-events: none;
+}
+
+[data-theme="light"] .orbital-glow {
+  /* Fix: Remove foggy glow in light mode as requested ("don't use grays") */
+  background: none;
 }
 
 .orbital-icon {
@@ -1281,8 +1287,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  /* Fix: Use secondary bg for contrast against white page, fallback to card bg for dark */
-  background: var(--bg-secondary);
+  /* Fix: White bg with strong border for light mode contrast */
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 100px;
   color: var(--text-secondary);
@@ -1293,6 +1299,13 @@
   transition: all 0.2s;
   /* Add shadow for pop in light mode */
   box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .demo-tab {
+  border-color: #000000;
+  /* Sharp Black Border */
+  background: #ffffff;
+  color: #000000;
 }
 
 .demo-tab:hover {

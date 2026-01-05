@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { SplineScene } from '@/components/ui/splite'
@@ -274,10 +275,12 @@ function App() {
 
         {/* Right 3D scene */}
         <div className="hero-spline">
-          <SplineScene
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="spline-scene"
-          />
+          <ErrorBoundary>
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="spline-scene"
+            />
+          </ErrorBoundary>
         </div>
       </section>
 

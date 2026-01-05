@@ -42,7 +42,8 @@ export default function CloudIDEPage() {
                     src="https://try.autominds.org"
                     title="Autominds Cloud IDE"
                     className="ide-frame"
-                    allow="clipboard-read; clipboard-write"
+                    allow="clipboard-read; clipboard-write; fullscreen; camera; microphone; geolocation"
+                    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-downloads"
                 />
             </motion.div>
 

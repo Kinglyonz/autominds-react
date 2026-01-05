@@ -1162,11 +1162,99 @@
   color: var(--gray-500);
 }
 
-/* Footer */
+/* Demo Pages */
+.demos-page {
+  padding-top: 80px;
+  /* Space for fixed nav if needed */
+  min-height: 100vh;
+  background: black;
+  /* Default to dark background */
+}
+
+.demos-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+}
+
+.demos-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.demos-header p {
+  color: var(--gray-500);
+  font-size: 1.1rem;
+}
+
+.demos-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.demos-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+  overflow-x: auto;
+  /* Allow scrolling on small screens */
+  -webkit-overflow-scrolling: touch;
+}
+
+.demo-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  color: var(--gray-400);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.demo-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.demo-tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.demos-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+@media (max-width: 768px) {
+  .demos-tabs {
+    justify-content: flex-start;
+    /* Align left for scroll */
+    padding-bottom: 1rem;
+    /* Space for scrollbar */
+  }
+}
+
+/* Footer Section */
 .footer {
-  background: var(--gray-900);
-  color: var(--white);
-  padding: 4rem 2rem;
+  background: var(--black);
+  padding: 6rem 0 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 

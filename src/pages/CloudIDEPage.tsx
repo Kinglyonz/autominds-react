@@ -31,9 +31,9 @@ export default function CloudIDEPage() {
                 </nav>
             </header>
 
-            {/* IDE Embed */}
+            {/* IDE Embed for Desktop */}
             <motion.div
-                className="ide-embed"
+                className="ide-embed desktop-only"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -44,6 +44,21 @@ export default function CloudIDEPage() {
                     allow="clipboard-read; clipboard-write"
                 />
             </motion.div>
+
+            {/* Mobile Launch Card */}
+            <div className="mobile-ide-launch mobile-only">
+                <div className="mobile-launch-card">
+                    <div className="mobile-launch-icon">📱</div>
+                    <h2>Mobile IDE Experience</h2>
+                    <p>For the best experience on mobile, we recommend launching the IDE in a dedicated tab.</p>
+                    <button
+                        onClick={() => window.open('https://try.autominds.org', '_blank')}
+                        className="btn btn-primary btn-large"
+                    >
+                        Launch App
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }

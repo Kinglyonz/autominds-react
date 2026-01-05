@@ -2480,6 +2480,14 @@
 .code-review-panel {
   max-width: 1000px;
   margin: 0 auto;
+  background: transparent;
+  /* Ensure transparent */
+}
+
+/* Explicitly force dark background on the page wrapper if generic styles fail */
+.demos-page {
+  background-color: #0a0a0a !important;
+  color: white !important;
 }
 
 .code-review-inner {

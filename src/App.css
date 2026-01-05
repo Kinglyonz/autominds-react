@@ -1061,13 +1061,15 @@
 .approach-item h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--gray-900);
+  color: #ffffff;
+  /* Fix: Force white */
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
 }
 
 .approach-item p {
-  color: var(--gray-500);
+  color: rgba(255, 255, 255, 0.7);
+  /* Fix: Force light gray */
   line-height: 1.7;
 }
 
@@ -1097,13 +1099,13 @@
 .security-item h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 0.75rem;
 }
 
 .security-item p {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7) !important;
   line-height: 1.6;
 }
 

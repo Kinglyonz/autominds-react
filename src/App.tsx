@@ -769,7 +769,7 @@ function App() {
           <div className="calendly-wrapper" style={{ height: '700px', minWidth: '320px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
             <div
               className="calendly-inline-widget"
-              data-url="https://calendly.com/autominds-admin/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=0071e3"
+              data-url="https://calendly.com/admin-autominds/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=0071e3"
               style={{ minWidth: '320px', height: '100%' }}
             />
           </div>

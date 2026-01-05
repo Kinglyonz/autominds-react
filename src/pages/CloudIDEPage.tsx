@@ -41,6 +41,7 @@ export default function CloudIDEPage() {
                 <iframe
                     src="https://try.autominds.org"
                     title="Autominds Cloud IDE"
+                    className="ide-frame"
                     allow="clipboard-read; clipboard-write"
                 />
             </motion.div>

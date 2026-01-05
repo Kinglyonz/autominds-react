@@ -1096,7 +1096,6 @@
   box-shadow: var(--shadow-card);
   /* Add shadow for light mode */
 }
-}
 
 .security-item h3 {
   font-size: 1.25rem;

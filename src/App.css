@@ -1097,13 +1097,13 @@
 .security-item h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--white);
+  color: #ffffff;
   margin-bottom: 0.75rem;
 }
 
 .security-item p {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
 }
 

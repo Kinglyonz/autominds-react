@@ -1311,13 +1311,9 @@
 }
 
 .footer .logo-auto {
-  color: white;
-  /* Ensure 'Auto' is white */
-}
-
-color: #ffffff !important;
--webkit-text-fill-color: #ffffff !important;
-background: none !important;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  background: none !important;
 }
 
 .footer .logo-minds {

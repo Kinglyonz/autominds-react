@@ -10,6 +10,8 @@
   --text-secondary: #a3a3a3;
   --text-tertiary: #525252;
 
+  --bg-nav: rgba(10, 10, 10, 0.8);
+
   --border-subtle: rgba(255, 255, 255, 0.1);
   --shadow-card: none;
 
@@ -42,6 +44,7 @@
   /* "Gray shadows so white doesn't look blank and open" */
   --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
+  --bg-nav: rgba(255, 255, 255, 0.8);
   --gradient-title: linear-gradient(135deg, #000000 0%, #404040 100%);
   /* Black to Charcoal */
 }
@@ -81,8 +84,8 @@ a {
 }
 
 .nav {
-  background: rgba(10, 10, 10, 0.8) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: var(--bg-nav) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
 }
 
 .nav-links a {

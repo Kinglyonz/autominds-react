@@ -1210,7 +1210,8 @@
   padding-top: 80px;
   /* Space for fixed nav if needed */
   min-height: 100vh;
-  background: black;
+  background: var(--bg-primary);
+  /* Fix: Use semantic background (Black in Dark, White in Light) */
   /* Default to dark background */
 }
 
@@ -1222,7 +1223,8 @@
 .demos-header h1 {
   font-size: 3rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
+  /* Fix: Use semantic text color */
   margin-bottom: 0.5rem;
 }
 
@@ -1257,10 +1259,12 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  /* Fix: Use semantic card background */
+  border: 1px solid var(--border-subtle);
   border-radius: 100px;
-  color: var(--gray-400);
+  color: var(--text-secondary);
+  /* Fix: Use semantic text color */
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
@@ -1268,8 +1272,8 @@
 }
 
 .demo-tab:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: var(--border-subtle);
+  color: var(--text-primary);
 }
 
 .demo-tab.active {

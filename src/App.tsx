@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -47,6 +47,18 @@ function MagneticButton({ children, className, href }: { children: React.ReactNo
   const springConfig = { damping: 15, stiffness: 150 }
   const springX = useSpring(x, springConfig)
   const springY = useSpring(y, springConfig)
+
+  // Load Calendly Script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return
@@ -754,36 +766,13 @@ function App() {
           <h2 className="section-title">Let's build something.</h2>
           <p className="contact-text">30 minutes. No pitch. Just a conversation about what's possible.</p>
 
-          {!formSubmitted ? (
-            <motion.form
-              className="contact-form"
-              onSubmit={handleFormSubmit}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="form-row">
-                <input type="text" placeholder="Your name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
-                <input type="email" placeholder="your@email.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
-              </div>
-              <textarea placeholder="Tell us about your project (optional)" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} rows={4} />
-              <MagneticButton href="#" className="btn btn-primary btn-large btn-glow">
-                Start the conversation
-              </MagneticButton>
-            </motion.form>
-          ) : (
-            <motion.div
-              className="form-success"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="success-icon">✓</div>
-              <h3>Message received.</h3>
-              <p>We'll be in touch within 24 hours.</p>
-            </motion.div>
-          )}
+          <div className="calendly-wrapper" style={{ height: '700px', minWidth: '320px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/autominds-admin/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=0071e3"
+              style={{ minWidth: '320px', height: '100%' }}
+            />
+          </div>
         </div>
       </AnimatedSection>
 

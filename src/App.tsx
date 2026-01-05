@@ -1,11 +1,41 @@
 import { useState, useRef } from 'react'
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { SplineScene } from '@/components/ui/splite'
 import { Spotlight } from '@/components/ui/spotlight'
 import { GradientText } from '@/components/ui/gradient-text'
 import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline'
-import { Briefcase, Users, Shield, FileCheck, Brain, Cloud } from 'lucide-react'
+import { Briefcase, Users, Shield, FileCheck, Brain, Cloud, Code, FileCode, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
 import './App.css'
+
+interface Violation {
+  id: string
+  impact: string
+  description: string
+  help: string
+  nodeCount?: number
+  nodes?: number
+  selectors?: string[]
+}
+
+interface ScanResult {
+  success: boolean
+  url: string
+  title: string
+  score: number
+  summary: {
+    total: number
+    nonCompliant?: number
+    warnings?: number
+    critical: number
+    serious: number
+    moderate: number
+    minor: number
+  }
+  violations: Violation[]
+  totalViolations: number
+  hasMore: boolean
+}
 
 // Magnetic Button Component
 function MagneticButton({ children, className, href }: { children: React.ReactNode; className?: string; href?: string }) {
@@ -94,6 +124,80 @@ function App() {
     e.preventDefault()
     console.log('Form submitted:', formData)
     setFormSubmitted(true)
+  }
+
+  // --- Demos Logic ---
+  const [activeDemo, setActiveDemo] = useState<'scanner' | 'ide' | 'code'>('scanner')
+  const [scanUrl, setScanUrl] = useState('')
+  const [isScanning, setIsScanning] = useState(false)
+  const [scanResult, setScanResult] = useState<ScanResult | null>(null)
+  const [scanError, setScanError] = useState<string | null>(null)
+  const [expandedIssues, setExpandedIssues] = useState<Set<number>>(new Set())
+
+  const toggleIssue = (index: number) => {
+    const newExpanded = new Set(expandedIssues)
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index)
+    } else {
+      newExpanded.add(index)
+    }
+    setExpandedIssues(newExpanded)
+  }
+
+  const handleScan = async () => {
+    if (!scanUrl || !scanUrl.includes('.')) {
+      setScanError('Please enter a valid URL')
+      return
+    }
+
+    setIsScanning(true)
+    setScanError(null)
+    setScanResult(null)
+    setExpandedIssues(new Set())
+
+    try {
+      // Note: In production, this needs to point to the real backend
+      const response = await fetch('http://localhost:3001/api/scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: scanUrl })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setScanResult(data)
+      } else {
+        setScanError(data.error || 'Scan failed')
+      }
+    } catch {
+      setScanError('Scanner service unavailable. Please try again.')
+    } finally {
+      setIsScanning(false)
+    }
+  }
+
+  const getScoreGradient = (score: number) => {
+    if (score >= 80) return 'linear-gradient(135deg, #10b981, #34d399)'
+    if (score >= 60) return 'linear-gradient(135deg, #f59e0b, #fbbf24)'
+    if (score >= 40) return 'linear-gradient(135deg, #f97316, #fb923c)'
+    return 'linear-gradient(135deg, #ef4444, #f87171)'
+  }
+
+  const getScoreLabel = (score: number) => {
+    if (score >= 80) return 'Good'
+    if (score >= 60) return 'Needs Work'
+    if (score >= 40) return 'Poor'
+    return 'Critical'
+  }
+
+  const getImpactStyle = (impact: string) => {
+    switch (impact) {
+      case 'critical': return { bg: 'rgba(239, 68, 68, 0.15)', border: '#ef4444', text: '#fca5a5' }
+      case 'serious': return { bg: 'rgba(249, 115, 22, 0.15)', border: '#f97316', text: '#fdba74' }
+      case 'moderate': return { bg: 'rgba(234, 179, 8, 0.15)', border: '#eab308', text: '#fde047' }
+      default: return { bg: 'rgba(59, 130, 246, 0.15)', border: '#3b82f6', text: '#93c5fd' }
+    }
   }
 
   return (

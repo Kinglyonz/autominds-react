@@ -115,8 +115,6 @@ function App() {
   const [messages, setMessages] = useState<{ type: 'bot' | 'user', text: string }[]>([
     { type: 'bot', text: "Hi, I'm here to help. What are you looking for?" }
   ])
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [formSubmitted, setFormSubmitted] = useState(false)
 
   const selectOption = (option: string) => {
     setMessages([...messages, { type: 'user', text: option }])
@@ -131,12 +129,6 @@ function App() {
       setMessages(prev => [...prev, { type: 'user', text: email }, { type: 'bot', text: "Perfect. We'll be in touch." }])
       setChatStep('done')
     }
-  }
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    setFormSubmitted(true)
   }
 
   // --- Demos Logic ---

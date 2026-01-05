@@ -1268,21 +1268,25 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: var(--bg-card);
-  /* Fix: Use semantic card background */
+  /* Fix: Use secondary bg for contrast against white page, fallback to card bg for dark */
+  background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: 100px;
   color: var(--text-secondary);
-  /* Fix: Use semantic text color */
-  font-weight: 500;
+  font-weight: 600;
+  /* Bolder text */
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
+  /* Add shadow for pop in light mode */
+  box-shadow: var(--shadow-card);
 }
 
 .demo-tab:hover {
-  background: var(--border-subtle);
+  background: var(--gray-200);
+  /* Distinct hover state */
   color: var(--text-primary);
+  border-color: var(--gray-400);
 }
 
 .demo-tab.active {

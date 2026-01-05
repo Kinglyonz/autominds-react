@@ -110,6 +110,23 @@ function AnimatedSection({ children, className, id }: { children: React.ReactNod
 }
 
 function App() {
+  // --- Theme Logic ---
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') as 'light' | 'dark' || 'dark';
+    }
+    return 'dark';
+  });
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
   const [chatOpen, setChatOpen] = useState(false)
   const [chatStep, setChatStep] = useState<'options' | 'input' | 'done'>('options')
   const [messages, setMessages] = useState<{ type: 'bot' | 'user', text: string }[]>([
@@ -211,12 +228,7 @@ function App() {
       <div className="mesh-gradient" />
 
       {/* Navigation */}
-      <motion.nav
-        className="nav"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
+      <nav className="nav">
         <div className="nav-inner">
           <a href="#" className="logo">
             <span className="logo-auto">Auto</span>
@@ -225,11 +237,34 @@ function App() {
           <div className="nav-links">
             <a href="#services">Services</a>
             <a href="#approach">Approach</a>
-            <a href="/demos">Demos</a>
-            <MagneticButton href="#contact" className="nav-cta">Start a project</MagneticButton>
+            <a href="#security">Security</a>
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle"
+              aria-label="Toggle theme"
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                color: 'var(--text-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0.5rem'
+              }}
+            >
+              {theme === 'dark' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+              )}
+            </button>
+            <MagneticButton href="#contact" className="btn btn-primary btn-sm">
+              Book a call
+            </MagneticButton>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Hero with Spline 3D */}
       <section className="hero hero-split">

@@ -80,7 +80,7 @@ a {
 
 /* Force dark text on light backgrounds if needed, but default is dark mode */
 .logo-auto {
-  color: white !important;
+  color: var(--text-primary) !important;
 }
 
 .nav {
@@ -89,9 +89,9 @@ a {
 }
 
 .nav-links a {
-  color: var(--gray-500) !important;
+  color: var(--text-secondary) !important;
 }
 
 .nav-links a:hover {
-  color: white !important;
+  color: var(--text-primary) !important;
 }

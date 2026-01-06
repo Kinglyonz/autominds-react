@@ -1110,6 +1110,10 @@
   letter-spacing: -0.02em;
 }
 
+[data-theme="light"] .approach-item h3 {
+  color: #000000 !important;
+}
+
 .approach-item p {
   color: var(--text-secondary);
   /* Fix: Use semantic var */
@@ -1155,6 +1159,10 @@
   font-weight: 600;
   color: var(--text-primary) !important;
   margin-bottom: 0.75rem;
+}
+
+[data-theme="light"] .security-item h3 {
+  color: #000000 !important;
 }
 
 .security-item p {
@@ -1281,6 +1289,10 @@
   margin-bottom: 0.5rem;
 }
 
+[data-theme="light"] .demos-header h1 {
+  color: #000000 !important;
+}
+
 .demos-header p {
   color: var(--gray-500);
   font-size: 1.1rem;
@@ -1359,6 +1371,10 @@
     padding-bottom: 1rem;
     /* Space for scrollbar */
   }
+}
+
+[data-theme="light"] .demos-header p {
+  color: #000000 !important;
 }
 
 /* Footer Section */

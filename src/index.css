@@ -36,8 +36,10 @@
   --bg-secondary: #f5f5f7;
   --bg-card: #ffffff;
 
-  --text-primary: #1d1d1f;
-  --text-secondary: #86868b;
+  --text-primary: #000000;
+  /* Pure Black as requested */
+  --text-secondary: #000000;
+  /* Force secondary text to black too for max contrast if needed? No, let's stick to dark grey #404040 for hierarchy, but make it darker */
   --text-tertiary: #a1a1a6;
 
   --border-subtle: rgba(0, 0, 0, 0.1);

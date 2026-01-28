@@ -39,7 +39,7 @@ export default function CloudIDEPage() {
                 transition={{ duration: 0.3 }}
             >
                 <iframe
-                    src="https://try.autominds.org"
+                    src="https://stackblitz.com/edit/stackblitz-starters-c1v87s?embed=1&theme=dark&hideExplorer=1&hideNavigation=1"
                     title="Autominds Cloud IDE"
                     className="ide-frame"
                     allow="clipboard-read; clipboard-write; fullscreen; camera; microphone; geolocation"

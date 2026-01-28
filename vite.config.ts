@@ -10,4 +10,16 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Copy public files to dist root
+  publicDir: 'public',
+  build: {
+    outDir: 'dist',
+    // Ensure public files override any built files
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html')
+      }
+    }
+  }
 })

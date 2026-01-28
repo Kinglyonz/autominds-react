@@ -1,9 +1,5 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const express = require('express');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -11,10 +7,22 @@ const PORT = process.env.PORT || 8080;
 // Serve static files from dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Handle all routes by serving index.html for React app
-// EXCEPT for .html files which should be served directly
+// Serve all HTML files directly from dist
 app.get('*.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', req.path));
+  const filePath = path.join(__dirname, 'dist', req.path);
+  res.sendFile(filePath);
+});
+
+// Serve CSS files
+app.get('*.css', (req, res) => {
+  const filePath = path.join(__dirname, 'dist', req.path);
+  res.sendFile(filePath);
+});
+
+// Serve JS files
+app.get('*.js', (req, res) => {
+  const filePath = path.join(__dirname, 'dist', req.path);
+  res.sendFile(filePath);
 });
 
 // For all other routes, serve the React app
@@ -23,5 +31,6 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`AutoMinds server running on port ${PORT}`);
+  console.log(`Serving from: ${path.join(__dirname, 'dist')}`);
 });

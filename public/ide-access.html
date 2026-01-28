@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMinds | Get IDE Access</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="logo_white.svg">
+    <style>
+        .access-container {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .access-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .benefit-icon {
+            color: #22c55e;
+            font-size: 1.25rem;
+        }
+
+        .form-group {
+            margin: 2rem 0;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            color: #fff;
+            font-family: inherit;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3B82F6;
+        }
+
+        .access-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+            border: none;
+            padding: 1.25rem 2rem;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .access-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .access-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 4px;
+        }
+
+        .password-display {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2rem;
+            color: #22c55e;
+            text-align: center;
+            margin: 1rem 0;
+            letter-spacing: 0.1em;
+        }
+
+        .instructions {
+            margin-top: 1.5rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin: 0.75rem 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="brand">
+                <div class="brand-icon"></div>
+                AutoMinds
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container access-container">
+        <div class="section-header center-text">
+            <h1 class="section-title">AutoMinds Studios</h1>
+            <p>The first "Factory" for Autonomous Sovereign Agents. Build. Wrap. Sell.</p>
+        </div>
+
+        <div class="access-card">
+            <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Why Build in the Sovereign Studio?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">◆</span>
+                    <div>
+                        <strong>Create & Sell</strong>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">
+                            Build agents, wrap them in Docker, and sell them on our marketplace. You keep 100%.
+                        </p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">◆</span>
+                    <div>
+                        <strong>Embedded Analyst</strong>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">
+                            "The Analyst" is pre-installed as your co-pilot. It knows our entire stack.
+                        </p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">◆</span>
+                    <div>
+                        <strong>Zero-Setup Environment</strong>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">
+                            A full VS Code + Linux environment running in the cloud. Ready in 30 seconds.
+                        </p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">◆</span>
+                    <div>
+                        <strong>Sovereign Architecture</strong>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">
+                            Build tools that respect privacy by default. Grade-A Compliance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRICING TIERS -->
+            <div class="pricing-grid"
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 3rem 0;">
+                <!-- Free -->
+                <div class="pricing-card"
+                    style="border: 1px solid var(--border); padding: 1.5rem; text-align: center; border-radius: 4px;">
+                    <h3 style="font-size: 1.1rem; color: var(--text-muted);">Builder</h3>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">$0</div>
+                    <ul
+                        style="list-style: none; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; padding: 0;">
+                        <li>Public IDE Access</li>
+                        <li>4h Session Limit</li>
+                        <li>Community Support</li>
+                    </ul>
+                </div>
+                <!-- Pro -->
+                <div class="pricing-card"
+                    style="border: 1px solid #3B82F6; background: rgba(59, 130, 246, 0.05); padding: 1.5rem; text-align: center; border-radius: 4px;">
+                    <div
+                        style="font-size: 0.7rem; color: #3B82F6; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                        MOST POPULAR</div>
+                    <h3 style="font-size: 1.1rem; color: #fff;">Sovereign Pro</h3>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">$49<span
+                            style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/mo</span></div>
+                    <ul
+                        style="list-style: none; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; padding: 0;">
+                        <li><strong>Persistent Storage (10GB)</strong></li>
+                        <li><strong>Private Air-Gapped Pod</strong></li>
+                        <li>"The Analyst" Copilot</li>
+                    </ul>
+                </div>
+                <!-- Agency -->
+                <div class="pricing-card"
+                    style="border: 1px solid var(--border); padding: 1.5rem; text-align: center; border-radius: 4px;">
+                    <h3 style="font-size: 1.1rem; color: var(--text-muted);">Agency</h3>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">$299<span
+                            style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/mo</span></div>
+                    <ul
+                        style="list-style: none; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; padding: 0;">
+                        <li>5 User Seats</li>
+                        <li>White-Label Export</li>
+                        <li>Priority Support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <form id="accessForm" style="margin-top: 3rem;">
+                <div class="form-group">
+                    <label class="form-label" style="display: block; margin-bottom: 0.75rem; font-weight: 500;">Enter
+                        Your Operator ID (Email)</label>
+                    <input type="email" id="emailInput" class="form-input" placeholder="operator@autominds.org"
+                        required>
+                </div>
+                <button type="submit" class="access-btn" id="submitBtn">Initialize Studio Environment</button>
+            </form>
+
+            <div class="result-section" id="resultSection">
+                <h3 style="color: #22c55e; margin-bottom: 1rem; text-align: center;">✓ Environment Initialized</h3>
+
+                <div class="instructions">
+                    <p style="text-align: center; margin-bottom: 1rem;">Your sovereign workspace is ready.</p>
+                    <a href="https://try.autominds.org" target="_blank" class="btn btn-primary"
+                        style="width: 100%; margin-top: 0.5rem; display: inline-block; text-align: center;">
+                        Launch Studio →
+                    </a>
+                </div>
+
+                <p
+                    style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; text-align: center;">
+                    Save your access credentials.<br>
+                    Trial Access: 30 days. <a href="mailto:admin@autominds.org" style="color: #3B82F6;">Apply for
+                        Partner Program</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const disposableDomains = [
+            'mailinator.com', 'yopmail.com', 'temp-mail.org', '10minutemail.com',
+            'guerrillamail.com', 'sharklasers.com', 'spam4.me', 'grr.la', 'maildrop.cc',
+            'getairmail.com', 'throwawaymail.com', 'tempmail.net', 'dispostable.com'
+        ];
+
+        document.getElementById('accessForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const emailInput = document.getElementById('emailInput');
+            const email = emailInput.value.trim().toLowerCase();
+
+            if (!email) return;
+
+            // 1. Regex Validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // 2. Disposable Domain Check
+            const domain = email.split('@')[1];
+            if (disposableDomains.includes(domain)) {
+                alert("Please use a permanent business or personal email address (no disposable emails).");
+                return;
+            }
+
+            // 3. Redirect to Stripe Checkout
+            // Sovereign Pro ($49) or Agency ($299)
+            // Pro Link: https://buy.stripe.com/3cIeVfalz9lOboYd55
+            window.location.href = 'https://buy.stripe.com/3cIeVfalz9lOboYd55';
+        });
+    </script>
+</body>
+
+</html>

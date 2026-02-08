@@ -1,78 +1,29 @@
 import { useState, useRef, useEffect } from 'react'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { SplineScene } from '@/components/ui/splite'
 import { Spotlight } from '@/components/ui/spotlight'
 import { GradientText } from '@/components/ui/gradient-text'
-import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline'
-import { Briefcase, Users, Shield, FileCheck, Brain, Cloud, Code, FileCode, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
+import { Mail, Zap, Clock, Shield, BarChart3, Users, Check, ArrowRight, Star, ChevronDown } from 'lucide-react'
 import './App.css'
 
-interface Violation {
-  id: string
-  impact: string
-  description: string
-  help: string
-  nodeCount?: number
-  nodes?: number
-  selectors?: string[]
-}
-
-interface ScanResult {
-  success: boolean
-  url: string
-  title: string
-  score: number
-  summary: {
-    total: number
-    nonCompliant?: number
-    warnings?: number
-    critical: number
-    serious: number
-    moderate: number
-    minor: number
-  }
-  violations: Violation[]
-  totalViolations: number
-  hasMore: boolean
-}
-
 // Magnetic Button Component
-function MagneticButton({ children, className, href }: { children: React.ReactNode; className?: string; href?: string }) {
+function MagneticButton({ children, className, href, onClick }: { children: React.ReactNode; className?: string; href?: string; onClick?: () => void }) {
   const ref = useRef<HTMLAnchorElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-
   const springConfig = { damping: 15, stiffness: 150 }
   const springX = useSpring(x, springConfig)
   const springY = useSpring(y, springConfig)
 
-  // Load Calendly Script
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return
     const rect = ref.current.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    x.set((e.clientX - centerX) * 0.15)
-    y.set((e.clientY - centerY) * 0.15)
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.15)
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.15)
   }
 
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
+  const handleMouseLeave = () => { x.set(0); y.set(0) }
 
   return (
     <motion.a
@@ -82,6 +33,7 @@ function MagneticButton({ children, className, href }: { children: React.ReactNo
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
@@ -94,7 +46,6 @@ function MagneticButton({ children, className, href }: { children: React.ReactNo
 function AnimatedSection({ children, className, id }: { children: React.ReactNode; className?: string; id?: string }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
     <motion.section
       ref={ref}
@@ -109,223 +60,179 @@ function AnimatedSection({ children, className, id }: { children: React.ReactNod
   )
 }
 
+const features = [
+  { icon: Mail, title: 'Smart Sorting', desc: 'AI categorizes your inbox instantly — promotions, clients, urgent, follow-ups.' },
+  { icon: Zap, title: 'Auto-Draft Replies', desc: 'Context-aware responses written in your voice. Review and send in one click.' },
+  { icon: Clock, title: 'Follow-Up Scheduling', desc: 'Never forget a thread. Automatic reminders and scheduled follow-ups.' },
+  { icon: Shield, title: 'Thread Summaries', desc: 'TLDR any email chain. Get the key points without reading 47 replies.' },
+  { icon: BarChart3, title: 'Priority Flagging', desc: 'Urgent items surface first. VIP contacts always get your attention.' },
+  { icon: Users, title: 'Analytics Dashboard', desc: 'See your email patterns, response times, and productivity trends.' },
+]
+
+const useCases = [
+  { emoji: '🏠', industry: 'Real Estate', desc: 'Auto-respond to leads, schedule showings, and follow up with buyers — all hands-free.' },
+  { emoji: '⚖️', industry: 'Law Firms', desc: 'Prioritize client emails, draft case updates, and never miss a filing deadline.' },
+  { emoji: '📊', industry: 'Accounting', desc: 'Sort tax documents, schedule client communications, and manage seasonal surges.' },
+  { emoji: '🏥', industry: 'Healthcare', desc: 'Triage patient inquiries, route referrals, and handle scheduling with care.' },
+]
+
+const faqs = [
+  { q: 'Is my email data secure?', a: 'Absolutely. We use bank-level encryption, never store your email content on our servers, and are fully GDPR compliant. Your data stays yours.' },
+  { q: 'Which email providers do you support?', a: 'Gmail and Microsoft Outlook (including Office 365). More providers coming soon.' },
+  { q: "Can I customize the AI's writing style?", a: 'Yes! The AI learns your tone, vocabulary, and communication style. You can also set explicit rules for different types of emails.' },
+  { q: 'How does the free plan work?', a: 'You get 50 AI email actions per month — sorting, drafting, summarizing. No credit card required. Upgrade anytime.' },
+  { q: 'Can I cancel anytime?', a: 'Yes. No contracts, no cancellation fees. Cancel with one click from your dashboard.' },
+  { q: 'Do you offer a money-back guarantee?', a: "Yes — 14-day money-back guarantee on all paid plans. If you're not saving time, we'll refund you." },
+]
+
+const testimonials = [
+  { name: 'Sarah Mitchell', role: 'Real Estate Agent, Keller Williams', quote: "I used to spend 3 hours a day on email. Now it's 20 minutes. AutoMinds handles the sorting and drafts — I just review and send.", stars: 5 },
+  { name: 'David Chen', role: 'Partner, Chen & Associates Law', quote: "Client emails never slip through the cracks anymore. The priority flagging alone is worth the subscription.", stars: 5 },
+  { name: 'Maria Rodriguez', role: 'CPA, Rodriguez Accounting', quote: "During tax season, I was drowning in emails. AutoMinds cut my inbox time by 80%. Game changer.", stars: 5 },
+]
+
 function App() {
-  // --- Theme Logic ---
+  // Theme
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') as 'light' | 'dark' || 'dark';
-    }
-    return 'dark';
-  });
+    if (typeof window !== 'undefined') return (localStorage.getItem('theme') as 'light' | 'dark') || 'dark'
+    return 'dark'
+  })
+  useEffect(() => { document.body.setAttribute('data-theme', theme); localStorage.setItem('theme', theme) }, [theme])
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
 
-  useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  // Pricing toggle
+  const [annual, setAnnual] = useState(false)
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
-
+  // Chat widget
   const [chatOpen, setChatOpen] = useState(false)
   const [chatStep, setChatStep] = useState<'options' | 'input' | 'done'>('options')
-  const [messages, setMessages] = useState<{ type: 'bot' | 'user', text: string }[]>([
-    { type: 'bot', text: "Hi, I'm here to help. What are you looking for?" }
+  const [messages, setMessages] = useState<{ type: 'bot' | 'user'; text: string }[]>([
+    { type: 'bot', text: "Hi! Interested in taking back your inbox? What can I help with?" }
   ])
 
   const selectOption = (option: string) => {
-    setMessages([...messages, { type: 'user', text: option }])
+    setMessages(prev => [...prev, { type: 'user', text: option }])
     setChatStep('input')
     setTimeout(() => {
-      setMessages(prev => [...prev, { type: 'bot', text: "Got it. Drop your email and we'll reach out within 24 hours." }])
+      setMessages(prev => [...prev, { type: 'bot', text: "Great choice! Drop your email and we'll get you set up within 24 hours." }])
     }, 500)
   }
 
   const submitEmail = (email: string) => {
     if (email.includes('@')) {
-      setMessages(prev => [...prev, { type: 'user', text: email }, { type: 'bot', text: "Perfect. We'll be in touch." }])
+      setMessages(prev => [...prev, { type: 'user', text: email }, { type: 'bot', text: "Perfect. We'll be in touch shortly!" }])
       setChatStep('done')
     }
   }
 
-  // --- Demos Logic ---
-  const [activeDemo, setActiveDemo] = useState<'scanner' | 'ide' | 'code'>('scanner')
-  const [scanUrl, setScanUrl] = useState('')
-  const [isScanning, setIsScanning] = useState(false)
-  const [scanResult, setScanResult] = useState<ScanResult | null>(null)
-  const [scanError, setScanError] = useState<string | null>(null)
-  const [expandedIssues, setExpandedIssues] = useState<Set<number>>(new Set())
+  // FAQ expand
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
-  const toggleIssue = (index: number) => {
-    const newExpanded = new Set(expandedIssues)
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index)
-    } else {
-      newExpanded.add(index)
-    }
-    setExpandedIssues(newExpanded)
-  }
-
-  const handleScan = async () => {
-    if (!scanUrl || !scanUrl.includes('.')) {
-      setScanError('Please enter a valid URL')
-      return
-    }
-
-    setIsScanning(true)
-    setScanError(null)
-    setScanResult(null)
-    setExpandedIssues(new Set())
-
-    try {
-      // Note: In production, this needs to point to the real backend
-      const response = await fetch('http://localhost:3001/api/scan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: scanUrl })
-      })
-
-      const data = await response.json()
-
-      if (data.success) {
-        setScanResult(data)
-      } else {
-        setScanError(data.error || 'Scan failed')
-      }
-    } catch {
-      setScanError('Scanner service unavailable. Please try again.')
-    } finally {
-      setIsScanning(false)
-    }
-  }
-
-  const getScoreGradient = (score: number) => {
-    if (score >= 80) return 'linear-gradient(135deg, #10b981, #34d399)'
-    if (score >= 60) return 'linear-gradient(135deg, #f59e0b, #fbbf24)'
-    if (score >= 40) return 'linear-gradient(135deg, #f97316, #fb923c)'
-    return 'linear-gradient(135deg, #ef4444, #f87171)'
-  }
-
-  const getScoreLabel = (score: number) => {
-    if (score >= 80) return 'Good'
-    if (score >= 60) return 'Needs Work'
-    if (score >= 40) return 'Poor'
-    return 'Critical'
-  }
-
-  const getImpactStyle = (impact: string) => {
-    switch (impact) {
-      case 'critical': return { bg: 'rgba(239, 68, 68, 0.15)', border: '#ef4444', text: '#fca5a5' }
-      case 'serious': return { bg: 'rgba(249, 115, 22, 0.15)', border: '#f97316', text: '#fdba74' }
-      case 'moderate': return { bg: 'rgba(234, 179, 8, 0.15)', border: '#eab308', text: '#fde047' }
-      default: return { bg: 'rgba(59, 130, 246, 0.15)', border: '#3b82f6', text: '#93c5fd' }
-    }
-  }
+  // Calendly script
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = "https://assets.calendly.com/assets/external/widget.js"
+    script.async = true
+    document.body.appendChild(script)
+    return () => { document.body.removeChild(script) }
+  }, [])
 
   return (
-    <div className="app">
-      {/* Mesh Gradient Background */}
+    <div className="app" data-theme={theme}>
       <div className="mesh-gradient" />
 
       {/* Navigation */}
       <nav className="nav">
         <div className="nav-inner">
-          <a href="#" className="logo">
+          <div className="logo">
             <span className="logo-auto">Auto</span>
-            <span className="logo-minds">minds</span>
-          </a>
+            <span className="logo-minds">Minds</span>
+          </div>
           <div className="nav-links">
-            <a href="#services">Services</a>
-            <a href="#approach">Approach</a>
-            <a href="#security">Security</a>
-            <button
-              onClick={toggleTheme}
-              className="theme-toggle"
-              aria-label="Toggle theme"
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                color: 'var(--text-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0.5rem'
-              }}
-            >
-              {theme === 'dark' ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
-              )}
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
+              {theme === 'dark' ? '☀️' : '🌙'}
             </button>
-            <MagneticButton href="#contact" className="btn btn-primary btn-sm">
-              Book a call
+            <MagneticButton href="#pricing" className="btn btn-primary btn-small">
+              Get Started Free
             </MagneticButton>
           </div>
         </div>
       </nav>
 
-      {/* Hero with Spline 3D */}
+      {/* Hero */}
       <section className="hero hero-split">
-        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
-
-        {/* Left content */}
+        <Spotlight className="animate-spotlight" fill="blue" />
         <div className="hero-content">
-          <motion.p
-            className="hero-label"
+          <motion.div
+            className="hero-badge"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6 }}
           >
-            AI Systems Integrator & Operator
-          </motion.p>
+            <Zap size={14} /> AI-Powered Email Assistant
+          </motion.div>
+
           <motion.h1
             className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
           >
-            We build AI.
-            <br />
-            <GradientText className="hero-gradient">You own it.</GradientText>
+            Your inbox.{' '}
+            <GradientText>On autopilot.</GradientText>
           </motion.h1>
+
           <motion.p
             className="hero-subtitle"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Your infrastructure. Your data. Your brand.
-            <br />
-            We just make it work.
+            AutoMinds reads, sorts, drafts, and schedules your emails — so you don't have to.
           </motion.p>
+
           <motion.div
             className="hero-cta"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <MagneticButton href="#contact" className="btn btn-primary btn-glow">
-              Let's build something
+            <MagneticButton href="#pricing" className="btn btn-primary btn-large">
+              Start Free <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
             </MagneticButton>
+            <MagneticButton href="#how-it-works" className="btn btn-secondary btn-large">
+              See How It Works
+            </MagneticButton>
+          </motion.div>
+
+          <motion.div
+            className="hero-stats"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="hero-stat">
+              <strong>50+</strong>
+              <span>Hours Saved/mo</span>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat">
+              <strong>99.7%</strong>
+              <span>Accuracy</span>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat">
+              <strong>2 min</strong>
+              <span>Setup</span>
+            </div>
           </motion.div>
         </div>
 
-        {/* Right 3D scene */}
         <div className="hero-spline">
-          <ErrorBoundary fallback={
-            <div className="spline-fallback" style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'url(/robot_fallback.png) no-repeat center center',
-              backgroundSize: 'contain'
-            }}>
-            </div>
-          }>
+          <ErrorBoundary>
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="spline-scene"
@@ -334,464 +241,286 @@ function App() {
         </div>
       </section>
 
-      {/* Services - Orbital Timeline */}
-      <section id="services" className="orbital-section">
-        <div className="section-inner">
-          <h2 className="section-title">What we deploy.</h2>
-          <RadialOrbitalTimeline
-            timelineData={[
-              {
-                id: 1,
-                title: "White-Label AI",
-                content: "Your brand. Our brain. Ship AI products tomorrow without hiring a single engineer.",
-                icon: Briefcase,
-                status: "completed",
-                energy: 100,
-              },
-              {
-                id: 2,
-                title: "Your AI Team",
-                content: "We don't consult. We build. Your dedicated AI team—embedded, accountable, shipping.",
-                icon: Users,
-                status: "completed",
-                energy: 95,
-              },
-              {
-                id: 3,
-                title: "Private LLMs",
-                content: "Your data never leaves. Models trained on your knowledge, running on your metal.",
-                icon: Brain,
-                status: "completed",
-                energy: 90,
-              },
-              {
-                id: 4,
-                title: "Cloud Agents",
-                content: "Autonomous systems that work while you sleep. Monitor. Decide. Act. Repeat.",
-                icon: Cloud,
-                status: "completed",
-                energy: 88,
-              },
-              {
-                id: 5,
-                title: "Compliance",
-                content: "ADA. 508. WCAG. We find every violation. We fix them. Automatically.",
-                icon: FileCheck,
-                status: "completed",
-                energy: 85,
-              },
-              {
-                id: 6,
-                title: "Security",
-                content: "Air-gapped. Zero-trust. Paranoid by design. Your secrets stay yours.",
-                icon: Shield,
-                status: "completed",
-                energy: 92,
-              },
-            ]}
-          />
+      {/* Social Proof Bar */}
+      <AnimatedSection className="social-proof-bar">
+        <div className="section-inner social-proof-inner">
+          <p className="social-proof-text">
+            Trusted by professionals in <strong>Real Estate</strong>, <strong>Law</strong>, <strong>Healthcare</strong>, and <strong>Accounting</strong>
+          </p>
         </div>
-      </section>
+      </AnimatedSection>
 
-
-
-      {/* Live Demos Section */}
-      <section className="demos-section" style={{ padding: '4rem 0', background: 'transparent' }}>
+      {/* Features */}
+      <AnimatedSection id="features" className="features-section">
         <div className="section-inner">
-          <div className="demos-header" style={{ marginBottom: '3rem', textAlign: 'center' }}>
-            <h2 className="section-title">Experience it Live.</h2>
-            <p style={{ color: 'var(--gray-500)', fontSize: '1.1rem' }}>No slide decks. Just working code.</p>
-          </div>
-
-          {/* Demo Tabs */}
-          <div className="demos-tabs">
-            <button
-              className={`demo-tab ${activeDemo === 'scanner' ? 'active' : ''}`}
-              onClick={() => setActiveDemo('scanner')}
-            >
-              <Shield size={20} />
-              Accessibility Scanner
-            </button>
-            <button
-              className={`demo-tab ${activeDemo === 'code' ? 'active' : ''}`}
-              onClick={() => setActiveDemo('code')}
-            >
-              <FileCode size={20} />
-              Code Review
-            </button>
-            <button
-              className={`demo-tab ${activeDemo === 'ide' ? 'active' : ''}`}
-              onClick={() => setActiveDemo('ide')}
-            >
-              <Code size={20} />
-              Cloud IDE
-            </button>
-          </div>
-
-          {/* Demo Content */}
-          <div className="demos-content">
-            {activeDemo === 'scanner' && (
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Everything your inbox needs.{' '}
+            <span className="gradient-text">Nothing it doesn't.</span>
+          </h2>
+          <div className="features-grid">
+            {features.map((f, i) => (
               <motion.div
-                className="demo-panel apple-scanner"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {/* Input Section */}
-                <div className="apple-input-section">
-                  <input
-                    type="url"
-                    placeholder="Enter website URL..."
-                    className="apple-input"
-                    value={scanUrl}
-                    onChange={(e) => setScanUrl(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleScan()}
-                  />
-                  <button
-                    className="apple-scan-btn"
-                    onClick={handleScan}
-                    disabled={isScanning}
-                  >
-                    {isScanning ? 'Scanning...' : 'Analyze'}
-                  </button>
-                </div>
-
-                {scanError && (
-                  <div className="apple-error">{scanError}</div>
-                )}
-
-                {isScanning && (
-                  <div className="apple-loading">
-                    <div className="apple-spinner"></div>
-                    <p>Analyzing accessibility...</p>
-                  </div>
-                )}
-
-                {scanResult && (
-                  <motion.div
-                    className="apple-results"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                  >
-                    {/* Score Hero */}
-                    <div className="apple-score-hero">
-                      <div
-                        className="apple-score-ring"
-                        style={{ background: getScoreGradient(scanResult.score) }}
-                      >
-                        <div className="apple-score-inner">
-                          <span className="apple-score-value">{scanResult.score}</span>
-                        </div>
-                      </div>
-                      <div className="apple-score-info">
-                        <h2>{scanResult.title}</h2>
-                        <a href={scanResult.url} target="_blank" rel="noopener noreferrer" className="apple-url">
-                          {scanResult.url} <ExternalLink size={14} />
-                        </a>
-                        <span className="apple-score-label" style={{ color: getScoreGradient(scanResult.score).includes('10b981') ? '#34d399' : getScoreGradient(scanResult.score).includes('ef4444') ? '#f87171' : '#fbbf24' }}>
-                          {getScoreLabel(scanResult.score)}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Quick Stats */}
-                    <div className="apple-quick-stats">
-                      <div className="apple-stat">
-                        <span className="apple-stat-value">{scanResult.summary.total}</span>
-                        <span className="apple-stat-label">Total Issues</span>
-                      </div>
-                      <div className="apple-stat apple-stat-red">
-                        <span className="apple-stat-value">{(scanResult.summary.nonCompliant ?? (scanResult.summary.critical + scanResult.summary.serious))}</span>
-                        <span className="apple-stat-label">Non-Compliant</span>
-                      </div>
-                      <div className="apple-stat apple-stat-yellow">
-                        <span className="apple-stat-value">{(scanResult.summary.warnings ?? (scanResult.summary.moderate + scanResult.summary.minor))}</span>
-                        <span className="apple-stat-label">Warnings</span>
-                      </div>
-                    </div>
-
-                    {/* Compliance Frameworks */}
-                    <div className="apple-frameworks">
-                      <span className="apple-framework-label">Compliance Status:</span>
-                      <div className="apple-framework-badges">
-                        {/* ADA Title II */}
-                        <span className={`apple-badge ${scanResult.summary.critical > 0 || scanResult.summary.serious > 0
-                          ? 'apple-badge-fail'
-                          : scanResult.summary.moderate > 0
-                            ? 'apple-badge-warn'
-                            : 'apple-badge-pass'
-                          }`}>
-                          <span className="badge-icon">
-                            {scanResult.summary.critical > 0 || scanResult.summary.serious > 0 ? '✕' : scanResult.summary.moderate > 0 ? '!' : '✓'}
-                          </span> ADA Title II
-                        </span>
-
-                        {/* WCAG 2.1 AA */}
-                        <span className={`apple-badge ${scanResult.score >= 80
-                          ? 'apple-badge-pass'
-                          : scanResult.score >= 50
-                            ? 'apple-badge-warn'
-                            : 'apple-badge-fail'
-                          }`}>
-                          <span className="badge-icon">
-                            {scanResult.score >= 80 ? '✓' : scanResult.score >= 50 ? '!' : '✕'}
-                          </span> WCAG 2.1 AA
-                        </span>
-
-                        {/* Section 508 */}
-                        <span className={`apple-badge ${scanResult.summary.critical > 0
-                          ? 'apple-badge-fail'
-                          : scanResult.summary.serious > 0
-                            ? 'apple-badge-warn'
-                            : 'apple-badge-pass'
-                          }`}>
-                          <span className="badge-icon">
-                            {scanResult.summary.critical > 0 ? '✕' : scanResult.summary.serious > 0 ? '!' : '✓'}
-                          </span> Section 508
-                        </span>
-
-                        {/* NIST 800-53 */}
-                        <span className={`apple-badge ${scanResult.summary.critical > 0
-                          ? 'apple-badge-fail'
-                          : scanResult.summary.serious > 0 || scanResult.summary.moderate > 0
-                            ? 'apple-badge-warn'
-                            : 'apple-badge-pass'
-                          }`}>
-                          <span className="badge-icon">
-                            {scanResult.summary.critical > 0 ? '✕' : (scanResult.summary.serious > 0 || scanResult.summary.moderate > 0) ? '!' : '✓'}
-                          </span> NIST 800-53
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Issues Accordion */}
-                    <div className="apple-issues">
-                      <h3>Issues Found</h3>
-                      {scanResult.violations.map((violation, i) => {
-                        const style = getImpactStyle(violation.impact)
-                        const isExpanded = expandedIssues.has(i)
-
-                        return (
-                          <div
-                            key={i}
-                            className="apple-issue"
-                            style={{
-                              background: style.bg,
-                              borderColor: style.border
-                            }}
-                          >
-                            <button
-                              className="apple-issue-header"
-                              onClick={() => toggleIssue(i)}
-                            >
-                              <div className="apple-issue-left">
-                                <span
-                                  className="apple-issue-impact"
-                                  style={{ backgroundColor: style.border }}
-                                >
-                                  {violation.impact.toUpperCase()}
-                                </span>
-                                <span className="apple-issue-title">{violation.help}</span>
-                              </div>
-                              <div className="apple-issue-right">
-                                <span className="apple-issue-count">
-                                  {violation.nodeCount || violation.nodes || 1} elements
-                                </span>
-                                {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                              </div>
-                            </button>
-
-                            <AnimatePresence>
-                              {isExpanded && (
-                                <motion.div
-                                  className="apple-issue-details"
-                                  initial={{ height: 0, opacity: 0 }}
-                                  animate={{ height: 'auto', opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <p className="apple-issue-desc">{violation.description}</p>
-
-                                  {violation.selectors && violation.selectors.length > 0 && (
-                                    <div className="apple-selectors">
-                                      <span className="apple-selector-label">Affected Elements:</span>
-                                      {violation.selectors.map((sel, j) => (
-                                        <div key={j} className="apple-selector-row">
-                                          <code className="apple-selector-code">
-                                            <span className="selector-type html-type">HTML</span>
-                                            <span className="selector-path">{sel.split('>').pop()?.trim() || sel}</span>
-                                          </code>
-                                          <code className="apple-selector-code">
-                                            <span className="selector-type css-type">CSS</span>
-                                            <span className="selector-path">{sel}</span>
-                                          </code>
-                                        </div>
-                                      ))}
-                                    </div>
-                                  )}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        )
-                      })}
-
-                      {scanResult.hasMore && (
-                        <div className="apple-more-issues">
-                          <span>+ {scanResult.totalViolations - 5} more issues</span>
-                          <a href="#contact" className="apple-unlock-btn">
-                            Get Full Report
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </motion.div>
-            )}
-
-            {activeDemo === 'code' && (
-              <motion.div
-                className="demo-panel ide-panel"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="ide-inner">
-                  <h2>Code Health Check</h2>
-                  <p className="demo-description">
-                    AI-powered code review. Get instant feedback on your code quality.
-                  </p>
-
-                  <div className="ide-features">
-                    <div className="ide-feature">
-                      <span className="ide-icon">🔍</span>
-                      <span>Bug detection</span>
-                    </div>
-                    <div className="ide-feature">
-                      <span className="ide-icon">⚡</span>
-                      <span>Performance tips</span>
-                    </div>
-                    <div className="ide-feature">
-                      <span className="ide-icon">📝</span>
-                      <span>Best practices</span>
-                    </div>
-                  </div>
-
-                  <div className="ide-cta">
-                    <Link
-                      to="/code-review"
-                      className="btn btn-primary btn-large"
-                    >
-                      Try Code Review
-                    </Link>
-                    <p className="ide-note">100 lines free · AI-Powered</p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {activeDemo === 'ide' && (
-              <motion.div
-                className="demo-panel ide-panel"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="ide-inner">
-                  <h2>Cloud IDE</h2>
-                  <p className="demo-description">
-                    VS Code in your browser. Access from any device, anywhere.
-                  </p>
-
-                  <div className="ide-features">
-                    <div className="ide-feature">
-                      <span className="ide-icon">💻</span>
-                      <span>Full VS Code experience</span>
-                    </div>
-                    <div className="ide-feature">
-                      <span className="ide-icon">📱</span>
-                      <span>Mobile accessible</span>
-                    </div>
-                    <div className="ide-feature">
-                      <span className="ide-icon">🔒</span>
-                      <span>Your data stays private</span>
-                    </div>
-                  </div>
-
-                  <div className="ide-cta">
-                    <Link
-                      to="/ide"
-                      className="btn btn-primary btn-large"
-                    >
-                      Launch Cloud IDE
-                    </Link>
-                    <p className="ide-note">Password: demo</p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Approach */}
-      <AnimatedSection id="approach" className="approach">
-        <div className="section-inner">
-          <h2 className="section-title">How we work.</h2>
-          <div className="approach-grid">
-            {[
-              { num: '01', title: 'Embedded', desc: 'Systems live inside your environment. Your data never touches our servers.' },
-              { num: '02', title: 'Continuous', desc: "We don't deliver reports. We deploy systems that keep working—forever." },
-              { num: '03', title: 'Auditable', desc: 'Every decision logged. Every action traceable. Built for compliance.' }
-            ].map((item, i) => (
-              <motion.div
-                key={item.num}
-                className="approach-item"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={f.title}
+                className="feature-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
-                <span className="approach-num">{item.num}</span>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+                <div className="feature-icon">
+                  <f.icon size={24} />
+                </div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </AnimatedSection>
 
-      {/* Security */}
-      <AnimatedSection id="security" className="security">
+      {/* How It Works */}
+      <AnimatedSection id="how-it-works" className="how-section">
         <div className="section-inner">
-          <h2 className="section-title">Enterprise-grade security.</h2>
-          <div className="security-grid">
-            <div className="security-item">
-              <h3>Air-Gapped Deployment</h3>
-              <p>Deploy on your infrastructure with zero internet connectivity. Your data never touches external servers.</p>
-            </div>
-            <div className="security-item">
-              <h3>SOC 2 Type II</h3>
-              <p>Independently audited security controls. Full compliance documentation available on request.</p>
-            </div>
-            <div className="security-item">
-              <h3>HIPAA Compatible</h3>
-              <p>Built for healthcare. BAA available. PHI never leaves your environment.</p>
-            </div>
-            <div className="security-item">
-              <h3>FedRAMP Ready</h3>
-              <p>Architected for federal requirements. Currently pursuing FedRAMP authorization.</p>
-            </div>
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Up and running in <span className="gradient-text">three steps.</span>
+          </h2>
+          <div className="steps-grid">
+            {[
+              { num: '01', title: 'Connect Your Email', desc: 'Gmail or Outlook — two clicks and you\'re linked. No IT team needed.', icon: '🔗' },
+              { num: '02', title: 'Set Your Preferences', desc: 'Tell the AI your rules, tone, and priorities. It adapts to you.', icon: '⚙️' },
+              { num: '03', title: 'Watch It Work', desc: 'Sit back. Your inbox is sorted, drafted, and managed — automatically.', icon: '✨' },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                className="step-card"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+              >
+                <span className="step-num">{step.num}</span>
+                <span className="step-emoji">{step.icon}</span>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </AnimatedSection>
 
-      {/* Contact */}
-      <AnimatedSection id="contact" className="contact">
+      {/* Use Cases */}
+      <AnimatedSection className="usecases-section">
+        <div className="section-inner">
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Built for <span className="gradient-text">every industry.</span>
+          </h2>
+          <div className="usecases-grid">
+            {useCases.map((uc, i) => (
+              <motion.div
+                key={uc.industry}
+                className="usecase-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              >
+                <span className="usecase-emoji">{uc.emoji}</span>
+                <h3>{uc.industry}</h3>
+                <p>{uc.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Pricing */}
+      <AnimatedSection id="pricing" className="pricing-section">
+        <div className="section-inner">
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Simple, transparent <span className="gradient-text">pricing.</span>
+          </h2>
+          <div className="billing-toggle">
+            <span className={!annual ? 'active' : ''}>Monthly</span>
+            <button
+              className={`toggle-switch ${annual ? 'on' : ''}`}
+              onClick={() => setAnnual(!annual)}
+              aria-label="Toggle annual billing"
+            >
+              <span className="toggle-knob" />
+            </button>
+            <span className={annual ? 'active' : ''}>Annual <span className="save-badge">Save 20%</span></span>
+          </div>
+          <div className="pricing-grid">
+            {/* Free */}
+            <motion.div
+              className="pricing-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3>Free</h3>
+              <div className="pricing-amount">
+                <span className="price">$0</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="pricing-desc">Get started — no credit card required.</p>
+              <ul className="pricing-features">
+                <li><Check size={16} /> 50 email actions/month</li>
+                <li><Check size={16} /> Basic inbox sorting</li>
+                <li><Check size={16} /> 1 email account</li>
+                <li><Check size={16} /> Email support</li>
+              </ul>
+              <MagneticButton href="https://calendly.com/admin-autominds/30min" className="btn btn-secondary btn-full">
+                Get Started
+              </MagneticButton>
+            </motion.div>
+
+            {/* Pro — Featured */}
+            <motion.div
+              className="pricing-card pricing-featured"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="popular-badge">Most Popular</div>
+              <h3>Pro</h3>
+              <div className="pricing-amount">
+                <span className="price">${annual ? '23' : '29'}</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="pricing-desc">For professionals who live in their inbox.</p>
+              <ul className="pricing-features">
+                <li><Check size={16} /> Unlimited email actions</li>
+                <li><Check size={16} /> AI draft replies</li>
+                <li><Check size={16} /> Follow-up scheduling</li>
+                <li><Check size={16} /> Thread summaries</li>
+                <li><Check size={16} /> Priority flagging</li>
+                <li><Check size={16} /> Priority support</li>
+              </ul>
+              <MagneticButton href="https://calendly.com/admin-autominds/30min" className="btn btn-primary btn-full">
+                Start Pro Trial <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+              </MagneticButton>
+            </motion.div>
+
+            {/* Business */}
+            <motion.div
+              className="pricing-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h3>Business</h3>
+              <div className="pricing-amount">
+                <span className="price">${annual ? '79' : '99'}</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="pricing-desc">For teams that need full control.</p>
+              <ul className="pricing-features">
+                <li><Check size={16} /> Everything in Pro</li>
+                <li><Check size={16} /> Multi-inbox support</li>
+                <li><Check size={16} /> Team collaboration</li>
+                <li><Check size={16} /> Custom AI rules</li>
+                <li><Check size={16} /> Analytics dashboard</li>
+                <li><Check size={16} /> Dedicated support</li>
+              </ul>
+              <MagneticButton href="https://calendly.com/admin-autominds/30min" className="btn btn-secondary btn-full">
+                Contact Sales
+              </MagneticButton>
+            </motion.div>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Testimonials */}
+      <AnimatedSection className="testimonials-section">
+        <div className="section-inner">
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            People are <span className="gradient-text">loving it.</span>
+          </h2>
+          <div className="testimonials-grid">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={t.name}
+                className="testimonial-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+              >
+                <div className="testimonial-stars">
+                  {Array.from({ length: t.stars }).map((_, j) => (
+                    <Star key={j} size={16} fill="currentColor" />
+                  ))}
+                </div>
+                <p className="testimonial-quote">"{t.quote}"</p>
+                <div className="testimonial-author">
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* FAQ */}
+      <AnimatedSection className="faq-section">
+        <div className="section-inner">
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Frequently asked <span className="gradient-text">questions.</span>
+          </h2>
+          <div className="faq-grid">
+            {faqs.map((faq, i) => (
+              <motion.div
+                key={i}
+                className={`faq-item ${expandedFaq === i ? 'expanded' : ''}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+              >
+                <div className="faq-question">
+                  <span>{faq.q}</span>
+                  <ChevronDown size={18} className={`faq-chevron ${expandedFaq === i ? 'rotated' : ''}`} />
+                </div>
+                <AnimatePresence>
+                  {expandedFaq === i && (
+                    <motion.div
+                      className="faq-answer"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p>{faq.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* CTA / Contact */}
+      <AnimatedSection id="contact" className="cta-section">
         <div className="section-inner contact-inner">
-          <h2 className="section-title">Let's build something.</h2>
-          <p className="contact-text">30 minutes. No pitch. Just a conversation about what's possible.</p>
+          <h2 className="section-title" style={{ textAlign: 'center' }}>
+            Ready to take back your <span className="gradient-text">inbox?</span>
+          </h2>
+          <p className="contact-text">Book a free 30-minute demo. No pitch. Just a look at what's possible.</p>
+
+          <div className="cta-buttons" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2rem' }}>
+            <MagneticButton href="https://calendly.com/admin-autominds/30min" className="btn btn-primary btn-large">
+              Book a Demo <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
+            </MagneticButton>
+          </div>
 
           <div className="calendly-wrapper" style={{ height: '700px', minWidth: '320px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
             <div
@@ -800,18 +529,50 @@ function App() {
               style={{ minWidth: '320px', height: '100%' }}
             />
           </div>
+
+          <div className="cta-contact-info" style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <p style={{ color: 'var(--gray-500)', fontSize: '0.9rem' }}>
+              Or reach us directly: <a href="mailto:khalillyons@gmail.com" style={{ color: 'var(--accent)' }}>khalillyons@gmail.com</a> · <a href="tel:+18555290581" style={{ color: 'var(--accent)' }}>+1-855-529-0581</a>
+            </p>
+          </div>
         </div>
       </AnimatedSection>
 
       {/* Footer */}
       <footer className="footer">
-        <div className="footer-inner">
-          <div className="logo">
-            <span className="logo-auto">Auto</span>
-            <span className="logo-minds">minds</span>
+        <div className="footer-inner footer-expanded">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <div className="logo">
+                <span className="logo-auto">Auto</span>
+                <span className="logo-minds">Minds</span>
+              </div>
+              <p className="footer-tagline">AI Email Assistant for Professionals</p>
+            </div>
+            <div className="footer-links">
+              <div className="footer-col">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+              </div>
+              <div className="footer-col">
+                <h4>Company</h4>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+              </div>
+              <div className="footer-col">
+                <h4>Connect</h4>
+                <a href="mailto:khalillyons@gmail.com">Email Us</a>
+                <a href="tel:+18555290581">Call Us</a>
+                <a href="https://calendly.com/admin-autominds/30min">Book a Demo</a>
+              </div>
+            </div>
           </div>
-          <p className="footer-text">AI Systems Integrator & Operator</p>
-          <p className="footer-copyright">© 2025 Autominds LLC · Delaware</p>
+          <div className="footer-bottom">
+            <p className="footer-copyright">&copy; 2026 AutoMinds LLC &middot; Delaware</p>
+          </div>
         </div>
       </footer>
 
@@ -840,7 +601,7 @@ function App() {
             transition={{ duration: 0.2 }}
           >
             <div className="chat-header">
-              <strong>Autominds</strong>
+              <strong>AutoMinds</strong>
               <span>Usually replies instantly</span>
             </div>
             <div className="chat-messages">
@@ -858,10 +619,10 @@ function App() {
             </div>
             {chatStep === 'options' && (
               <div className="chat-options">
-                <button onClick={() => selectOption('I need a Private LLM')}>Private LLM</button>
-                <button onClick={() => selectOption('I need Cloud Agents')}>Cloud Agents</button>
-                <button onClick={() => selectOption('I need Compliance Scanning')}>Compliance</button>
-                <button onClick={() => selectOption('Something else')}>Other</button>
+                <button onClick={() => selectOption('I want the Free Plan')}>Free Plan</button>
+                <button onClick={() => selectOption("I'm interested in Pro")}>Pro Plan</button>
+                <button onClick={() => selectOption('Tell me about Business')}>Business Plan</button>
+                <button onClick={() => selectOption('I have questions')}>Just Questions</button>
               </div>
             )}
             {chatStep === 'input' && (

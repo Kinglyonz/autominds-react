@@ -162,9 +162,9 @@
                 <div class="product-badge" style="color: #ff9900; border-color: rgba(255, 153, 0, 0.3); margin: 0 auto 1.5rem;">
                     CUSTOM CLOUD INTELLIGENCE
                 </div>
-                <h1 class="section-title" style="font-size: 3rem; margin-bottom: 1.5rem;">Your Personal Cloud Team,<br>Built Into Your Infrastructure</h1>
+                <h1 class="section-title" style="font-size: 3rem; margin-bottom: 1.5rem;">Deploy AI Agents In Your Cloud,<br>Chat With Them Through Slack & Teams</h1>
                 <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: var(--text-secondary);">
-                    Stop renting generic AI tools. Get a custom cloud architect, security engineer, or DevOps specialist—deployed directly into your AWS or Azure environment.
+                    Stop renting generic AI tools. Get custom cloud agents—deployed directly into YOUR cloud infrastructure. Talk to them through Slack, Microsoft Teams, or any business chat you already use.
                 </p>
             </div>
         </div>
@@ -175,7 +175,7 @@
         <div class="container">
             <div class="section-header center-text">
                 <h2 class="section-title">What We Build For You</h2>
-                <p>Custom AI agents tailored to your cloud infrastructure, security requirements, and operational workflows.</p>
+                <p>Custom AI agents deployed into your cloud—AWS, Azure, GCP, or any infrastructure. Chat with them directly through Slack or Microsoft Teams.</p>
             </div>
 
             <div class="services-grid">
@@ -233,6 +233,140 @@
         </div>
     </section>
 
+    <!-- Safety Features -->
+    <section style="padding: var(--space-xl) 0; background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, rgba(0, 0, 0, 0) 100%); border-top: 1px solid rgba(34, 197, 94, 0.2);">
+        <div class="container">
+            <div class="section-header center-text">
+                <div style="display: inline-block; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1rem;">
+                    <span style="color: #22c55e; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">🔒 Enterprise-Grade Safety</span>
+                </div>
+                <h2 class="section-title">Built-In Safety Controls</h2>
+                <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary); line-height: 1.7;">
+                    Every AutoMinds agent includes comprehensive safety controls to protect your infrastructure and prevent costly mistakes.
+                </p>
+            </div>
+
+            <div class="services-grid" style="margin-top: 3rem;">
+                <!-- Dry Run Mode -->
+                <div class="service-card" style="border-color: rgba(34, 197, 94, 0.2);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="background: rgba(34, 197, 94, 0.1); width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                            🧪
+                        </div>
+                        <h4 style="margin: 0; color: #22c55e;">Dry Run Mode</h4>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Test all operations before executing them. Dry run mode simulates actions and shows exactly what would happen—without making any changes to your infrastructure.
+                    </p>
+                    <div style="background: rgba(34, 197, 94, 0.05); border-left: 3px solid #22c55e; padding: 0.75rem; font-size: 0.85rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace;">
+                        <code>DRY_RUN_MODE=true</code> (default)
+                    </div>
+                </div>
+
+                <!-- Budget Caps -->
+                <div class="service-card" style="border-color: rgba(59, 130, 246, 0.2);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="background: rgba(59, 130, 246, 0.1); width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                            💰
+                        </div>
+                        <h4 style="margin: 0; color: #3B82F6;">Budget Caps</h4>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Set monthly spending limits. The agent automatically rejects any operation that would exceed your configured budget cap—preventing runaway costs.
+                    </p>
+                    <div style="background: rgba(59, 130, 246, 0.05); border-left: 3px solid #3B82F6; padding: 0.75rem; font-size: 0.85rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace;">
+                        <code>BUDGET_CAP_USD=500</code> (configurable)
+                    </div>
+                </div>
+
+                <!-- Approval Workflows -->
+                <div class="service-card" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="background: rgba(168, 85, 247, 0.1); width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                            ✅
+                        </div>
+                        <h4 style="margin: 0; color: #A855F7;">Slack Approvals</h4>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Destructive operations require human approval. The agent sends approval requests to your Slack channel and waits for confirmation before executing.
+                    </p>
+                    <div style="background: rgba(168, 85, 247, 0.05); border-left: 3px solid #A855F7; padding: 0.75rem; font-size: 0.85rem; color: var(--text-secondary);">
+                        <div style="margin-bottom: 0.5rem;">
+                            🚨 <strong>Approval Required:</strong> Stop 3 instances
+                        </div>
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">
+                            <code>/approve abc123</code> or <code>/deny abc123</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blast Radius -->
+                <div class="service-card" style="border-color: rgba(251, 146, 60, 0.2);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="background: rgba(251, 146, 60, 0.1); width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                            💥
+                        </div>
+                        <h4 style="margin: 0; color: #FB923C;">Blast Radius Tags</h4>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Every operation is classified by potential impact: None, Single Resource, Service, Cross-Service, or Organization—with automatic escalation based on risk.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; font-size: 0.75rem; font-weight: 600;">
+                        <span style="background: rgba(34, 197, 94, 0.1); color: #22c55e; padding: 0.25rem 0.75rem; border-radius: 12px;">NONE</span>
+                        <span style="background: rgba(59, 130, 246, 0.1); color: #3B82F6; padding: 0.25rem 0.75rem; border-radius: 12px;">SINGLE</span>
+                        <span style="background: rgba(251, 146, 60, 0.1); color: #FB923C; padding: 0.25rem 0.75rem; border-radius: 12px;">SERVICE</span>
+                        <span style="background: rgba(239, 68, 68, 0.1); color: #EF4444; padding: 0.25rem 0.75rem; border-radius: 12px;">CROSS-SERVICE</span>
+                    </div>
+                </div>
+
+                <!-- Rollback Mechanism -->
+                <div class="service-card" style="border-color: rgba(236, 72, 153, 0.2);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="background: rgba(236, 72, 153, 0.1); width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                            ⏪
+                        </div>
+                        <h4 style="margin: 0; color: #EC4899;">Rollback Capability</h4>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Undo operations if something goes wrong. Every action is logged with rollback instructions stored in DynamoDB for instant recovery.
+                    </p>
+                    <div style="background: rgba(236, 72, 153, 0.05); border-left: 3px solid #EC4899; padding: 0.75rem; font-size: 0.85rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace;">
+                        <code>rollback(operation_id='abc123')</code>
+                    </div>
+                </div>
+
+                <!-- Audit Trail -->
+                <div class="service-card" style="border-color: rgba(100, 116, 139, 0.2);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="background: rgba(100, 116, 139, 0.1); width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                            📋
+                        </div>
+                        <h4 style="margin: 0; color: #64748B;">Complete Audit Trail</h4>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Every action, approval, and denial is permanently logged in DynamoDB with timestamps, user IDs, and operation details for compliance and forensics.
+                    </p>
+                    <div style="background: rgba(100, 116, 139, 0.05); border-left: 3px solid #64748B; padding: 0.75rem; font-size: 0.85rem; color: var(--text-secondary);">
+                        SOC2, HIPAA, PCI-DSS compliant
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Guarantee -->
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(34, 197, 94, 0.05); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 8px; text-align: center;">
+                <h3 style="color: #22c55e; margin-bottom: 0.75rem; font-size: 1.25rem;">Safety Guarantee</h3>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7;">
+                    All agents deploy with <strong>dry run mode enabled by default</strong>. Nothing happens in your infrastructure until you explicitly approve and disable dry run mode.
+                </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#intake" class="btn btn-primary" style="display: inline-block; padding: 0.875rem 2rem; font-weight: 600;">
+                        Get Custom Quote →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Use Cases -->
     <section style="padding: var(--space-xl) 0; border-top: 1px solid var(--border);">
         <div class="container">
@@ -257,7 +391,7 @@
                 <div class="use-case">
                     <h4 style="color: #fff; margin-bottom: 0.75rem;">Disaster Recovery</h4>
                     <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
-                        Automated backup, replication, and failover strategies across AWS regions or Azure availability zones.
+                        Automated backup, replication, and failover strategies across cloud regions and availability zones.
                     </p>
                 </div>
                 <div class="use-case">
@@ -275,36 +409,79 @@
         <div class="container">
             <div class="section-header center-text">
                 <h2 class="section-title">Pricing Structure</h2>
-                <p>Custom pricing based on your infrastructure size and requirements</p>
+                <p>Simple, transparent pricing: Base deployment + per-employee access</p>
             </div>
 
-            <div style="max-width: 900px; margin: 3rem auto;">
+            <!-- Base Deployment Fee -->
+            <div style="max-width: 900px; margin: 2rem auto;">
+                <h3 style="color: #ff9900; margin-bottom: 1.5rem; font-size: 1.25rem;">1. One-Time Deployment Fee</h3>
                 <table style="width: 100%; border-collapse: collapse; text-align: left;">
                     <thead>
                         <tr style="border-bottom: 1px solid var(--border);">
-                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Deployment Size</th>
-                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Monthly Price Range</th>
-                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Included</th>
+                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Agent Type</th>
+                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Deployment Fee</th>
+                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">What's Included</th>
                         </tr>
                     </thead>
                     <tbody style="font-size: 0.95rem;">
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Startup (1-10 resources)</td>
-                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">$500 - $1,500</td>
-                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Basic monitoring, weekly reports</td>
+                            <td style="padding: 1.5rem 1rem; color: #3B82F6; font-weight: 600;">Cloud Architect</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">$2,500</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Full deployment, IaC setup, cost optimization training</td>
                         </tr>
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Mid-Market (10-100 resources)</td>
-                            <td style="padding: 1.5rem 1rem; color: #3B82F6; font-weight: 600;">$2,000 - $5,000</td>
-                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">24/7 monitoring, auto-remediation</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">Security Engineer</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">$3,500</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Compliance config, threat detection training, audit setup</td>
                         </tr>
                         <tr>
-                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Enterprise (100+ resources)</td>
-                            <td style="padding: 1.5rem 1rem; color: #ff9900; font-weight: 600;">Custom Quote</td>
-                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Multi-cloud, dedicated support</td>
+                            <td style="padding: 1.5rem 1rem; color: #8B5CF6; font-weight: 600;">DevOps Specialist</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">$2,000</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">CI/CD pipeline integration, monitoring setup</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Per Employee Pricing -->
+            <div style="max-width: 900px; margin: 3rem auto;">
+                <h3 style="color: #ff9900; margin-bottom: 1.5rem; font-size: 1.25rem;">2. Monthly Per-Employee Access</h3>
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Team Size</th>
+                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Per Employee/Month</th>
+                            <th style="padding: 1rem; color: var(--text-primary); font-weight: 600;">Includes</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 0.95rem;">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">1-10 employees</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">$29/employee</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Slack/Teams access, unlimited queries</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">11-50 employees</td>
+                            <td style="padding: 1.5rem 1rem; color: #3B82F6; font-weight: 600;">$19/employee</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Volume discount, priority support</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">50+ employees</td>
+                            <td style="padding: 1.5rem 1rem; color: #ff9900; font-weight: 600;">$12/employee</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary);">Enterprise rate, dedicated support</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Example -->
+            <div style="max-width: 700px; margin: 2rem auto; padding: 1.5rem; background: rgba(255, 153, 0, 0.05); border: 1px solid rgba(255, 153, 0, 0.2); border-radius: 8px;">
+                <h4 style="color: #ff9900; margin-bottom: 0.75rem;">Example: 20-Person DevOps Team</h4>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                    Cloud Architect Agent: <strong style="color: #fff;">$2,500</strong> one-time<br>
+                    + 20 employees × $19/mo = <strong style="color: #fff;">$380/month</strong><br>
+                    <span style="color: #22c55e; font-weight: 600;">= $2,500 upfront + $380/month ongoing</span>
+                </p>
             </div>
         </div>
     </section>
@@ -346,8 +523,22 @@
                         <option value="">Select a provider</option>
                         <option value="AWS">Amazon Web Services (AWS)</option>
                         <option value="Azure">Microsoft Azure</option>
-                        <option value="Both">Both AWS & Azure</option>
-                        <option value="Other">Other / Multi-Cloud</option>
+                        <option value="GCP">Google Cloud Platform (GCP)</option>
+                        <option value="DigitalOcean">DigitalOcean</option>
+                        <option value="Multi-Cloud">Multi-Cloud</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Chat Integration *</label>
+                    <select name="chatIntegration" class="form-select" required>
+                        <option value="">How will you communicate with your agent?</option>
+                        <option value="Slack">Slack</option>
+                        <option value="Teams">Microsoft Teams</option>
+                        <option value="Discord">Discord</option>
+                        <option value="API">API Only</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
@@ -414,14 +605,15 @@
             const data = Object.fromEntries(formData);
 
             // Build email body
-            const subject = `Cloud Services Quote Request - ${data.company || data.firstName}`;
+            const subject = `Cloud Intelligence Quote Request - ${data.company || data.firstName}`;
             const body = `
-New Cloud Services Quote Request:
+New Cloud Intelligence Quote Request:
 
 Name: ${data.firstName} ${data.lastName}
 Email: ${data.email}
 Company: ${data.company || 'N/A'}
 Cloud Provider: ${data.cloudProvider}
+Chat Integration: ${data.chatIntegration}
 Service Type: ${data.serviceType}
 Infrastructure Size: ${data.infraSize || 'Not specified'}
 Timeline: ${data.timeline || 'Not specified'}

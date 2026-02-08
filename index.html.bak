@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMinds | Intelligence. Operated.</title>
+    <meta name="description" content="We operate AI systems for organizations that can’t afford mistakes.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="logo_white.svg">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand">
+                <div class="brand-icon"></div>
+                AutoMinds
+            </a>
+            <div class="nav-menu">
+                <a href="#capabilities" class="nav-link">Capabilities</a>
+                <a href="analyst.html" class="nav-link" style="color: #0071E3;">Tiny LLM</a>
+                <a href="cloud-services.html" class="nav-link" style="color: #22c55e;">Cloud Intelligence</a>
+                <a href="ide-access.html" class="nav-link" style="color: #ef4444;">Studios</a>
+                <button id="themedev-toggle" class="nav-link"
+                    style="background: none; border: none; cursor: pointer; display: flex; align-items: center; padding: 0.25rem;">
+                    <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: block;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        <div class="container hero-content">
+            <span class="hero-Eyebrow">Defined by Responsibility</span>
+            <h1 class="hero-title">Intelligence.<br>Operated.</h1>
+            <p class="hero-subtitle">
+                Capability is no longer the differentiator. Judgment is.<br>
+                We operate sovereign AI systems for organizations that cannot afford to fail.
+            </p>
+            <div class="hero-actions">
+                <a href="mailto:admin@autominds.org" class="btn btn-primary">Contact Operations</a>
+                <!-- <a href="#capabilities" class="btn btn-secondary">System Capabilities</a> -->
+                <a href="#capabilities" class="btn btn-secondary">System Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities (Bento) -->
+    <section id="capabilities" class="capabilities">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What We Operate</h2>
+                <p>We do not sell tools. We deploy and manage sovereign intelligence infrastructure inside your
+                    perimeter.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Product 1: The Analyst (Pillar A) -->
+                <div class="bento-card span-2" style="position: relative; overflow: hidden;">
+                    <div class="card-content">
+                        <div class="product-badge" style="color: #3B82F6; border-color: rgba(59, 130, 246, 0.3);">PILLAR
+                            A</div>
+                        <h3>The Sovereign Analyst</h3>
+                        <p><strong>The "Tiny LLM" Service.</strong> A private AI brain that runs 100% on YOUR hardware. No cloud. No data leaves your network. Ever.</p>
+                        <ul class="feature-list"
+                            style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.85rem;">
+                            <li>► Runs On-Premise (Your Servers)</li>
+                            <li>► Private LLMs (Phi-3 / Llama-3)</li>
+                            <li>► Zero Data Exfiltration</li>
+                        </ul>
+                        <div style="display: flex; gap: 2rem; margin-top: 1.5rem; align-items: center;">
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #fff;">$499<span
+                                        style="font-size: 0.9rem; color: var(--text-muted); font-weight: 400;"> one-time</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">+ $19.99/mo for updates (optional)</div>
+                            </div>
+                            <a href="https://buy.stripe.com/3cIaEZctH7dG50Ad5557W08" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: The Operator (Pillar B) -->
+                <div class="bento-card span-vertical"
+                    style="background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, rgba(0,0,0,0) 100%); border-color: rgba(34, 197, 94, 0.2);">
+                    <div class="card-content">
+                        <div class="product-badge" style="color: #22c55e; border-color: rgba(34, 197, 94, 0.3);">PILLAR
+                            B</div>
+                        <h3>The Cloud Operator</h3>
+                        <p>Autonomous sentinels that guard your infrastructure. Deploy in any cloud, chat through Slack or Teams
+                            24/7.</p>
+                        <ul class="feature-list"
+                            style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.85rem;">
+                            <li>► Auto-Remediation</li>
+                            <li>► Cost Optimization</li>
+                            <li>► Security Auditing</li>
+                        </ul>
+                        <div style="margin-top: auto; padding-top: 1rem;">
+                            <a href="cloud-services.html" class="btn btn-secondary-sm"
+                                style="color: #22c55e; border-color: #22c55e;">Get Cloud Intelligence →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: The Studio (Factory) -->
+                <div class="bento-card span-2">
+                    <div class="card-content">
+                        <div class="product-badge" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">THE
+                            FACTORY</div>
+                        <h3>AutoMinds Studios</h3>
+                        <p>The infrastructure to build your own. A persistent, air-gapped IDE with "Effect"
+                            pre-installed.</p>
+                        <div style="display: flex; gap: 2rem; margin-top: 1rem; align-items: center;">
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #fff;">$49<span
+                                        style="font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">/mo</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Sovereign Pro Tier</div>
+                            </div>
+                            <a href="ide-access.html" class="btn btn-primary">Start Building</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Custom Cloud Solutions -->
+                <div class="bento-card span-2"
+                    style="background: linear-gradient(180deg, rgba(255, 153, 0, 0.05) 0%, rgba(0,0,0,0) 100%); border-color: rgba(255, 153, 0, 0.2);">
+                    <div class="card-content">
+                        <div class="product-badge" style="color: #ff9900; border-color: rgba(255, 153, 0, 0.3);">CUSTOM BUILD</div>
+                        <h3>Cloud Intelligence Agents</h3>
+                        <p>Deploy AI agents directly in YOUR cloud. Chat with them through Slack or Microsoft Teams—they become part of your team.</p>
+                        <ul class="feature-list"
+                            style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.85rem;">
+                            <li>► Deployed In Your Cloud</li>
+                            <li>► Chat via Slack & Teams</li>
+                            <li>► Security & Cost Optimization</li>
+                        </ul>
+                        <div style="display: flex; gap: 2rem; margin-top: 1.5rem; align-items: center;">
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #fff;">Custom Pricing</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Tailored to Your Infrastructure</div>
+                            </div>
+                            <a href="cloud-services.html" class="btn btn-primary">Get Custom Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPARISON SECTION -->
+            <div style="margin-top: 6rem; margin-bottom: 4rem;">
+                <h2 class="section-title" style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Why
+                    AutoMinds is Undeniable.</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; color: white;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <th style="text-align: left; padding: 1rem; color: var(--text-muted);">FEATURE</th>
+                                <th style="text-align: left; padding: 1rem; color: #ef4444;">MICROSOFT COPILOT</th>
+                                <th style="text-align: left; padding: 1rem; color: #3B82F6;">AUTOMINDS SOVEREIGN</th>
+                                <th style="text-align: left; padding: 1rem; color: var(--text-muted);">CUSTOM AGENCY
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 1rem;">Setup Fee</td>
+                                <td style="padding: 1rem;">$0</td>
+                                <td style="padding: 1rem; color: #22c55e;">$0 (Downloadable)</td>
+                                <td style="padding: 1rem;">$15,000+</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 1rem;">Monthly Cost</td>
+                                <td style="padding: 1rem;">$30 / user</td>
+                                <td style="padding: 1rem; font-weight: 700;">$49 - $200 / user</td>
+                                <td style="padding: 1rem;">$3,000+ / mo</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 1rem;">Data Privacy</td>
+                                <td style="padding: 1rem; color: #ef4444;">"Trust Us" (Policy)</td>
+                                <td style="padding: 1rem; color: #22c55e;">Air-Gapped (Physics)</td>
+                                <td style="padding: 1rem;">Varies</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem;">Ownership</td>
+                                <td style="padding: 1rem;">Renting</td>
+                                <td style="padding: 1rem; color: #22c55e;">Owning (Local Pod)</td>
+                                <td style="padding: 1rem;">Owning</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- The Mandate (Who + Risk) -->
+    <section id="mandate" class="mandate-section">
+        <div class="container">
+            <div class="split-layout">
+                <div class="split-col">
+                    <h2 class="section-title-sm">Who We Work With</h2>
+                    <ul class="exclusive-list">
+                        <li><strong>Municipal & State Agencies</strong></li>
+                        <li><strong>Regulated & Compliance-Critical Enterprises</strong></li>
+                        <li><strong>Commercial Organizations</strong> modernizing internal workflows</li>
+                        <li><strong>Educators & Professionals</strong> applying AI to real-world systems</li>
+                    </ul>
+                </div>
+                <div class="split-col">
+                    <h2 class="section-title-sm">Risk Adaptation</h2>
+                    <div class="risk-tiers">
+                        <div class="risk-item">
+                            <span class="risk-label">Low Risk</span>
+                            <span class="risk-desc">Advisory, workflow design, applied automation</span>
+                        </div>
+                        <div class="risk-item">
+                            <span class="risk-label">Business Critical</span>
+                            <span class="risk-desc">Governed deployments with human oversight</span>
+                        </div>
+                        <div class="risk-item">
+                            <span class="risk-label highlight">Sovereign</span>
+                            <span class="risk-desc">Operation inside your perimeter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Doctrine (Refusals + Accountability) -->
+    <section id="doctrine" class="doctrine-section">
+        <div class="container">
+            <div class="doctrine-grid">
+                <div class="doctrine-card refusal">
+                    <h3 class="card-header-sm">What We Refuse To Do</h3>
+                    <ul class="refusal-list">
+                        <li>Deploy public-cloud AI for regulated or sensitive data</li>
+                        <li>Chain opaque third-party models without clear responsibility</li>
+                        <li>Ship autonomous systems without defined human authority</li>
+                        <li>Sell "AI tools" disguised as infrastructure</li>
+                    </ul>
+                    <p class="doctrine-note">Judgment begins with limits.</p>
+                </div>
+                <div class="doctrine-card accountability">
+                    <h3 class="card-header-sm">Accountability & Governance</h3>
+                    <p class="mb-4">Intelligence without ownership is liability. Every operated system includes:</p>
+                    <ul class="check-list">
+                        <li>A named human owner</li>
+                        <li>A defined decision authority</li>
+                        <li>A documented kill-path</li>
+                        <li>A post-incident responsibility model</li>
+                    </ul>
+                    <p class="doctrine-note">Automation executes. Humans remain accountable.</p>
+                    <a href="cloud-services.html#safety" class="btn btn-secondary" style="margin-top: 2rem; width: 100%;">View Safety Features</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Sovereign Difference (Comparison) -->
+    <section class="comparison-section" style="padding: var(--space-xl) 0; border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Not Public AI?</h2>
+                <p>Public models treat your data as training fodder. Sovereign Operations treat it as a state secret.
+                </p>
+            </div>
+
+            <div class="comparison-table" style="overflow-x: auto;">
+                <table
+                    style="width: 100%; border-collapse: collapse; text-align: left; font-family: 'Inter', sans-serif;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <th
+                                style="padding: 1rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; font-size: 0.85rem;">
+                                Feature</th>
+                            <th style="padding: 1rem; color: var(--text-primary); font-size: 1.1rem;">AutoMinds
+                                Sovereign</th>
+                            <th style="padding: 1rem; color: var(--text-secondary); font-weight: 400;">Public Cloud AI
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary); font-weight: 500;">Data
+                                Residency</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">Air-Gapped (Your
+                                Perimeter)</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-muted);">Shared Public Server</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary); font-weight: 500;">Model
+                                Ownership</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">You Own The Brain</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-muted);">You Rent The API</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary); font-weight: 500;">Liability
+                            </td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">Defined Responsibility
+                                Chain</td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-muted);">"As Is" (No Liability)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-secondary); font-weight: 500;">
+                                Gov/Defense Ready</td>
+                            <td style="padding: 1.5rem 1rem; color: #22c55e; font-weight: 600;">SAM.gov / NIST 800-53
+                            </td>
+                            <td style="padding: 1.5rem 1rem; color: var(--text-muted);">Generic SOC2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Actually Do -->
+    <section class="pricing-section" style="padding: var(--space-xl) 0; background: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header center-text">
+                <h2 class="section-title">What We Build</h2>
+                <p>We're a sovereign AI development firm. We build custom solutions that live in YOUR environment.</p>
+            </div>
+
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <!-- Custom Development (Primary) -->
+                <div class="bento-card" style="border: 1px solid #3B82F6; background: rgba(59, 130, 246, 0.05);">
+                    <div class="card-content">
+                        <div
+                            style="margin-bottom: 1rem; font-family: 'Roboto Mono'; font-size: 0.8rem; color: #60A5FA;">
+                            WHAT WE DO</div>
+                        <h3>Custom AI Development</h3>
+                        <p style="margin-bottom: 2rem;">Have an idea? We build it. AI agents, automation systems,
+                            document intelligence—tailored to your exact workflow.</p>
+                        <ul class="check-list" style="margin-bottom: auto;">
+                            <li>Agent Development (Chatbots, Assistants)</li>
+                            <li>Document/Data Analysis Systems</li>
+                            <li>Workflow Automation</li>
+                        </ul>
+                        <div
+                            style="font-family: 'Roboto Mono'; font-size: 1rem; color: var(--text-secondary); margin-top: 2rem;">
+                            Hourly or Project-based
+                        </div>
+                        <a href="mailto:admin@autominds.org?subject=Custom%20Development%20Inquiry"
+                            class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Request Quote</a>
+                    </div>
+                </div>
+
+                <!-- Proof of Concept -->
+                <div class="bento-card" style="border: 1px solid var(--border);">
+                    <div class="card-content">
+                        <div
+                            style="margin-bottom: 1rem; font-family: 'Roboto Mono'; font-size: 0.8rem; color: var(--text-muted);">
+                            PILOTS</div>
+                        <h3>Proof of Concept</h3>
+                        <p style="margin-bottom: 2rem;">Not sure if it's possible? We build a 2-4 week pilot to prove
+                            feasibility before you commit to a full build.</p>
+                        <ul class="check-list" style="margin-bottom: auto;">
+                            <li>Feasibility Assessment</li>
+                            <li>Working Prototype</li>
+                            <li>Risk & Cost Report</li>
+                        </ul>
+                        <a href="mailto:admin@autominds.org?subject=Pilot%20Request" class="btn btn-secondary"
+                            style="width: 100%; margin-top: 2rem;">Inquire</a>
+                    </div>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bento-card" style="border: 1px solid var(--border);">
+                    <div class="card-content">
+                        <div
+                            style="margin-bottom: 1rem; font-family: 'Roboto Mono'; font-size: 0.8rem; color: var(--text-muted);">
+                            ENTERPRISE</div>
+                        <h3>Sovereign Infrastructure</h3>
+                        <p style="margin-bottom: 2rem;">For regulated industries that need AI but can't use public
+                            clouds. Air-gapped, on-premise, full compliance.</p>
+                        <ul class="check-list" style="margin-bottom: auto;">
+                            <li>Air-Gapped Deployment</li>
+                            <li>HIPAA / SOC2 / NIST Compliance</li>
+                            <li>Dedicated Operations Team</li>
+                        </ul>
+                        <a href="mailto:admin@autominds.org?subject=Enterprise%20Infrastructure"
+                            class="btn btn-secondary" style="width: 100%; margin-top: 2rem;">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Protocol -->
+    <section id="protocol" class="protocol-section">
+        <div class="container">
+            <div class="section-header center-text">
+                <h2 class="section-title">Engagement Protocol</h2>
+                <p>How we move from conversation to operation.</p>
+            </div>
+            <div class="protocol-steps">
+                <div class="step">
+                    <span class="step-num">01</span>
+                    <h4>Feasibility Assessment</h4>
+                    <p>Logic & Scope Check. We determine if sovereign infrastructure is required.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <span class="step-num">02</span>
+                    <h4>Controlled Pilot</h4>
+                    <p>Isolated Environment. We deploy a bounded system to prove value and safety.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <span class="step-num">03</span>
+                    <h4>Sovereign Operation</h4>
+                    <p>Full Governance. We take responsibility for the system's output and uptime.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Proof / Testimonials -->
+        <section class="testimonials" style="border-top: 1px solid var(--border); padding: 4rem 0;">
+            <div class="container" style="text-align: center;">
+                <p
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Trusted Infrastructure Partners</p>
+
+                <div class="testimonial-card"
+                    style="max-width: 800px; margin: 0 auto; background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%); border: 1px solid var(--border); padding: 3rem; border-radius: 2px;">
+                    <blockquote
+                        style="font-size: 1.25rem; font-weight: 400; line-height: 1.6; color: var(--text-primary); margin: 0; font-family: 'Inter', sans-serif;">
+                        "AutoMinds gave us the visibility we did not know we were missing. <br>
+                        Their sovereign architecture is the only way we trust AI with our compliance data."
+                    </blockquote>
+                    <div
+                        style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                        <img src="assets/orus_logo.png" alt="Orus Group" class="partner-logo blend-logo">
+                        <span style="color: var(--text-secondary);">|</span>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Enterprise IT & Sovereign Cloud
+                            Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <p><span class="status-pulse"></span> &copy; 2026 AutoMinds LLC. All Systems Operational.</p>
+            </div>
+        </footer>
+
+        <script>
+            const toggleBtn = document.getElementById('themedev-toggle');
+            const sunIcon = document.querySelector('.theme-icon-sun');
+            const moonIcon = document.querySelector('.theme-icon-moon');
+            const body = document.body;
+
+            // Check local storage
+            if (localStorage.getItem('theme') === 'light') {
+                body.classList.add('light-mode');
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+
+                if (body.classList.contains('light-mode')) {
+                    localStorage.setItem('theme', 'light');
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                }
+            });
+        </script>
+        <script src="js/background-paths.js"></script>
+        <script src="js/payment.js"></script>
+</body>
+
+</html>
